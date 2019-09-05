@@ -156,3 +156,44 @@ say "values ",@countries.values;
 say "kv ",@countries.kv;
 
 #Interpolation basics
+my $who = 'your mom';
+say '$who ate the pie'; 
+say "$who ate the pie"; 
+
+#Interpolation of arrays and hashes
+say "Contact me@hotmail.com";
+
+my @winners = <David Ed Nicola>;    #Array
+say "The winner is @winners[0]";
+say "Top 3 were @winners[]";        #zen slice = empty index
+
+#Interpolating method calls
+say "Top 3 are: @winners.join(',')";
+say "CONGRATULATIONS @winners[0].uc()!";
+say @winners.WHAT;
+say "CONGRATULATIONS {4-3}. @winners[0].uc()!";
+
+say "<b><$who></b>";
+
+say "it again";
+note "Uh-oh...";
+
+#my $color = prompt "Name a color: "; #input something
+#say $color;
+
+#Working with files
+my $whole-file-open = open "asd.txt";
+say $whole-file-open;
+
+my $whole-file-slurp = slurp "asd.txt"; #reads whole file
+say $whole-file-slurp;
+say $whole-file-slurp.WHAT;
+
+my @lines = $whole-file-open.IO.lines;
+say @lines;
+say @lines.WHAT;
+
+spurt 'asd.txt', 'some text'; #replaced text in textfile by 'some text'
+say slurp "asd.txt"; #reads txt file and makes it to output
+
+#Flow control
