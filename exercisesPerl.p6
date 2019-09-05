@@ -46,11 +46,11 @@ say 'not 0 ',not 0; # True (lower precedence form of !)
 say ?'', ?'0', ?'False';
 say (+"42").WHAT,(+"1.5").WHAT,(+"4.2e4").WHAT;
 
-#Scalars
+##Scalars
 my $answer = 42;
 say  $answer.WHAT; 
 
-#Assignment vs. binding
+##Assignment vs. binding
 $answer = 2;
 say $answer;
 $answer = $answer + 19;
@@ -74,12 +74,12 @@ my $b := $a;    # innerhalb a ist b
 $b = 100;       # b ist 100
 say $a;         # a ist 100
 
-#Arrays
+##Arrays
 my @countries = 'UK', 'Slovakia', 'Spain', 'Sweden';
 say @countries.WHAT;
 say @countries.elems;
 
-#Array indexing
+##Array indexing
 say @countries[0];
 @countries[4] ='Czech Republic';
 say @countries.elems;
@@ -113,7 +113,7 @@ say @values[1,2].WHAT;
 say @values;
 say @countries.VAR.WHAT;
 
-#Hashes
+##Hashes
 my %capitals = UK => "London", Slovakia => "Bratislava";
 say %capitals.WHAT; #hash
 say %capitals.elems;
@@ -121,7 +121,7 @@ say %capitals;
 say %capitals{"UK", "Slovakia"};
 say %capitals<UK Slovakia>;
 
-#Existence and deletion
+##Existence and deletion
 say %capitals<UK>:exists;
 say %capitals<Elbonia>:exists;
 %capitals<England> = %capitals<UK>;
@@ -155,19 +155,19 @@ say "keys ",@countries.keys;
 say "values ",@countries.values;
 say "kv ",@countries.kv;
 
-#Interpolation basics
+##Interpolation basics
 my $who = 'your mom';
 say '$who ate the pie'; 
 say "$who ate the pie"; 
 
-#Interpolation of arrays and hashes
+##Interpolation of arrays and hashes
 say "Contact me@hotmail.com";
 
 my @winners = <David Ed Nicola>;    #Array
 say "The winner is @winners[0]";
 say "Top 3 were @winners[]";        #zen slice = empty index
 
-#Interpolating method calls
+##Interpolating method calls
 say "Top 3 are: @winners.join(',')";
 say "CONGRATULATIONS @winners[0].uc()!";
 say @winners.WHAT;
@@ -181,7 +181,7 @@ note "Uh-oh...";
 #my $color = prompt "Name a color: "; #input something
 #say $color;
 
-#Working with files
+##Working with files
 my $whole-file-open = open "asd.txt";
 say $whole-file-open;
 
@@ -196,4 +196,79 @@ say @lines.WHAT;
 spurt 'asd.txt', 'some text'; #replaced text in textfile by 'some text'
 say slurp "asd.txt"; #reads txt file and makes it to output
 
-#Flow control
+##Flow control
+##ComparisonsNumeric String
+"Equal == eq
+Not equal != ne
+Less than < lt
+Less than or equal <= le
+Greater than > gt
+Greater than or equal >= ge";
+
+say 'edam'.flip;
+say (1,2,3).reverse;
+say 'omg' x 2;
+say 'omg' xx 2;
+
+##if/elsif/else
+#my $num = prompt "Test of defined VAR and prompt = Enter a number: ";
+#if $num < 0 {
+#    say "Negative";
+#}
+#elsif $num > 0 {
+#    say "Positive";
+#}
+#else{
+#    say "Zero";
+#}
+
+##given/when
+#given prompt "Test of given and prompt = Enter a number: " {
+#    when * < 0 {
+#       say "Negative";
+#    }
+#    when * > 0 {
+#        say "Positive";
+#    }
+#    default {
+#        say "Zero";
+#    }
+#}
+
+##Loops: loop
+#loop {
+#    say "Fill all the screen: challenge accepted!";    
+#}
+loop (my $i = 10; $i > 0; $i--) {
+    say $i;
+}
+say "Lift off!".uc; 
+
+##Loops: while / until
+my @tasks;
+while @tasks.elems < 2 {
+    @tasks.push(prompt("Enter a tasks: "))
+}
+
+#say @tasks;
+
+#my @task;
+#until @task.elems == 2 {
+#    @task.push(prompt("Enter a task: "))
+#}
+
+#say @task;
+
+##Loops: while/until with pointy blocks
+#my @tasks; 
+#while prompt("Enter a task (blank if done): ") -> $t {
+#    @tasks.push($t);
+#}
+#my @copyToFile = open "asd.txt";
+#spurt @copyToFile, @tasks;                          #input and copy to file
+#say slurp @copyToFile;
+
+#my @taskss;
+#if prompt("Enter file to write tasks (optional): ") -> $name {
+#    @taskss.push($name)
+#}
