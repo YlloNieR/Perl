@@ -1,6 +1,6 @@
 say "guess my number".uc;
 my $numberPC = (1..100).pick;
-say $numberPC;
+#say $numberPC; #Cheat
 
 #1. Versuch
 my $numberHUMAN1 = prompt("1. Gib eine Nummer ein: ");
@@ -94,6 +94,7 @@ else {
                         }
                         else{
                             say "Youn suck!!!!!";
+                            say "Die richtige Nummer waere ",$numberPC," gewesen!";
                         }
                     }
                 }
