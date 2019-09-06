@@ -245,10 +245,10 @@ loop (my $i = 10; $i > 0; $i--) {
 say "Lift off!".uc; 
 
 ##Loops: while / until
-my @tasks;
-while @tasks.elems < 2 {
-    @tasks.push(prompt("Enter a tasks: "))
-}
+#my @tasks;
+#while @tasks.elems < 2 {
+#    @tasks.push(prompt("Enter a tasks: "))
+#7}
 
 #say @tasks;
 
@@ -272,3 +272,42 @@ while @tasks.elems < 2 {
 #if prompt("Enter file to write tasks (optional): ") -> $name {
 #    @taskss.push($name)
 #}
+
+##Iteration
+my %capitals = Austria => 'Wien', Poland => 'Warsaw';
+for %capitals.kv -> $country, $city {
+    say "$city is the capital of $country";
+}
+
+my @dancers = <Jane Jill Jonny Jimmy Jenny Jack>;
+for @dancers.pick(*) -> $first, $second {
+    say "$first dances with $second";
+}
+
+my %dict := bag 'asd2.txt'.IO.words;
+say "Meist benutzte Woerter: ", %dict.sort(-*.value).head: 5;
+
+##Subs and signatures
+my $greeter = -> $greeting, $name { say "$greeting, $name!" };
+$greeter('Hej','Carl');
+
+my $text;
+
+##declare sub routine
+sub my-func { say "Look ma, no args!" }
+my-func;
+
+sub if($cond, $code) { if $cond { $code() } }
+if(True, -> { say "Wow, a sub called 'if'!" });
+
+say substr "craft", 1;
+
+#Returning results
+sub truncate($text) {
+    return $text.chars > 100
+        ?? "$text.substr(0, 10)..."
+        !! $text
+}
+
+
+#Passing arrays and hashes
